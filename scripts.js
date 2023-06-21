@@ -28,6 +28,7 @@ function closeNav()
     for (let index = 0; index < navItems.length; index++) {
         const element = navItems[index];
         element.classList.remove("animate");
+        element.style.visibility = "hidden"
     }
 }
 
@@ -36,6 +37,7 @@ function openNav()
     navItems[0].classList.add("animate");
     for (let index = 1; index < navItems.length; index++) {
         const element = navItems[index];
+        element.style.visibility = "visible"
         element.classList.add("animate");
     }
     navSection.classList.add('display');
