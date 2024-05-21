@@ -1,19 +1,18 @@
 const [container] = document.getElementsByClassName("container")
 const navSection = document.getElementById("navListMobile");
-const navItems = document.getElementsByClassName("navItem")
+const navItems = document.getElementsByClassName("mobileNav")
 container.addEventListener("click",()=>{
-    console.log(navSection.classList);
-    if(navSection.classList.contains("hidden"))
-    {
-        openNav();
-    }
-    else
+    if(navSection.classList.contains("show"))
     {
         closeNav();
     }
+    else
+    {
+        openNav();
+    }
 })
 
-const navLinks = document.getElementsByClassName("navItem");
+const navLinks = document.getElementsByClassName("mobileNav");
 
 for (let i = 0; i < navLinks.length; i++) {
     navLinks[i].addEventListener("click",function(){
@@ -23,23 +22,23 @@ for (let i = 0; i < navLinks.length; i++) {
 
 function closeNav()
 {
-    navSection.classList.remove('display');
-    navSection.classList.add('hidden');
+    navSection.classList.remove('show');
     for (let index = 0; index < navItems.length; index++) {
         const element = navItems[index];
         element.classList.remove("animate");
         element.style.visibility = "hidden"
     }
+    navSection.style.maxHeight= "0vh";
 }
 
 function openNav()
 {
+    navSection.classList.add('show');
     navItems[0].classList.add("animate");
-    for (let index = 1; index < navItems.length; index++) {
+    for (let index = 0; index < navItems.length; index++) {
         const element = navItems[index];
         element.style.visibility = "visible"
         element.classList.add("animate");
     }
-    navSection.classList.add('display');
-    navSection.classList.remove('hidden');
+    navSection.style.maxHeight= "100vh";
 }
